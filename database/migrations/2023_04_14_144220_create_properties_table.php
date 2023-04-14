@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('address');
             $table->string('postal_code');
+            $table->boolean('sold');
             $table->timestamps();
         });
     }
