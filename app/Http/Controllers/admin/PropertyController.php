@@ -24,8 +24,22 @@ class PropertyController extends Controller
      */
     public function create()
     {       
+        $property = new Property();
+
+        $property->fill([
+
+            'surface' => 40,
+            'rooms'  => 3,
+            'bedrooms' => 1,
+            'floor' => 8,
+            'city' => 'Montpellier',
+            'postal_code' => 34000,
+            'sold' => false,
+
+        ]);
+        
         return view('admin.properties.form',[
-            'property' => new property()
+            'property' => $property
         ]);
     }
 
@@ -34,7 +48,8 @@ class PropertyController extends Controller
      */
     public function store(PropertyFormRequest $request)
     {
-        //
+        $property = Property::create($request->validated());
+        return to_route('admin.property.index')->with('success', 'Le Bien a été crée');
     }
 
   
