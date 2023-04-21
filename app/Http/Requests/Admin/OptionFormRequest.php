@@ -22,7 +22,7 @@ class OptionFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-                  'name' => ['required', 'min:3'],
+                  'name' => ['unique:options','required', 'min:3'],
            
         ];
     }
