@@ -9,7 +9,8 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-import bootstrap from 'bootstrap';
+
+import * as TomSelect from 'tom-select';
 
 
 /**
