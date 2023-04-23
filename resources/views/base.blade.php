@@ -26,7 +26,7 @@
     <ul class="navbar-nav">
       
       <li class="nav-item">
-        <a @class(['nav-link', 'active' => str_contains($route, 'property.')]) href="/">Biens</a>
+        <a @class(['nav-link', 'active' => str_contains($route, 'property.')]) href="{{ route('property.index') }}">Biens</a>
       </li>
 
      

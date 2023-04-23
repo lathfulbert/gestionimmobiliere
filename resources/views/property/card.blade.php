@@ -4,7 +4,7 @@
 
         <div class="card-title">
 
-            <a href="/"> {{ $property->title }} </a>
+            <a href="{{ route('property.show', ['slug' => $property->getSlug(), 'property'=> $property]) }}"> {{ $property->title }} </a>
 
         </div>
         <p class="card-text">
