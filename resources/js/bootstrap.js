@@ -10,7 +10,7 @@ window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
-import * as TomSelect from 'tom-select';
+//import * as TomSelect from 'tom-select';
 
 
 /**

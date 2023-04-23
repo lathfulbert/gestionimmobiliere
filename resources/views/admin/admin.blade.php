@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')| Administration</title>
-     @vite('resources/css/app.css')
-     @vite('resources/js/app.js')
-     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+     @vite(['resources/css/app.css' , 'resources/js/app.js'])
+    
   </head>
   <body>
 
