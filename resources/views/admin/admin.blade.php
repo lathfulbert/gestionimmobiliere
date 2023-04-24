@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')| Administration</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
      @vite(['resources/css/app.css' , 'resources/js/app.js'])
     
   </head>
@@ -19,7 +18,7 @@
 
       <div class="container-fluid">
 
-  <a class="navbar-brand" href="#">Agence</a>
+  <a class="navbar-brand" href="{{ route('admin.property.index') }}">Agence</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
