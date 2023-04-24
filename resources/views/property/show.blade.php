@@ -72,7 +72,13 @@
 
                      <tr>
                         <td>Etage</td>
-                        <td>{{ $property->floor }}</td>
+                        <td>{{ $property->floor ?: 'Rez de chaussée' }}</td>
+                    </tr>
+
+                     <tr>
+                        <td>Localisation</td>
+                        <td>
+                            {{ $property->address }}<br>{{ $property->city }} ({{ $property->postal_code }}) </td>
                     </tr>
 
                 </table>
