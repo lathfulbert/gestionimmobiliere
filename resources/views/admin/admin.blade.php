@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')| Administration</title>
 
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+
+    <style>
+      @layer reset {
+        button {all: unset;}
+      }
+
+    </style>
+
      @vite(['resources/css/app.css' , 'resources/js/app.js'])
     
   </head>
@@ -34,6 +43,22 @@
       </li>
       
     </ul>
+
+    <div class="ms-auto">
+
+       <ul class="navbar-nav">
+      
+      <li class="nav-item">
+        <form action="{{ route('logout')}}" method="post">
+          @csrf
+           @method('delete')
+           <button class="nav-link">Se Deconnecter</button>
+        </form>
+      </li>
+
+    </ul>
+
+    </div>
   </div>
 </div>
 
@@ -41,26 +66,7 @@
 
     <div class="container mt-5">
 
-      @if (session('success'))
-         <div class="alert alert-success">
-          {{ session ('success') }}
-        </div>
-      @endif
-
-
-      @if ($errors->any())
-
-         <div class="alert alert-danger">
-            <ul class="my-0">
-              @foreach ($errors->all() as $error)
-                  
-              @endforeach
-                  <li> {{ $error }}</li>
-            </ul>
-        </div>
-
-      @endif
-     
+     @include('shared.flash')
         
         @yield('content')
 
