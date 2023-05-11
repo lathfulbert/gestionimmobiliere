@@ -31,6 +31,11 @@
                       <div class="d-flex gap-2 w-100 justify-content-end">
                        <a class="btn btn-primary" href="{{ route('admin.property.edit', $property) }}">Editer</a>
                         
+
+                        @can("delete" , $property)
+                          
+                       
+
                        <form action="{{ route('admin.property.destroy', $property) }}" method="post">
                         
                         @csrf
@@ -38,6 +43,9 @@
                         <button type="submit" class="btn btn-danger">Supprimer</button>
 
                         </form>
+
+                         @endcan
+                         
                       </div>
                     </td>
                     

@@ -44,4 +44,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function (){
 
     Route::resource('option',  OptionController::class)->except('show');
 
+  
+
 });
