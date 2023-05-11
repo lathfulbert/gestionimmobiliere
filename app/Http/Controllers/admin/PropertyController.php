@@ -30,7 +30,6 @@ class PropertyController extends Controller
       // Auth::user()->can('viewAny', Property::class);
 
         $this->authorize('viewAny', Property::class);
-
         return view('admin.properties.index', [
             'properties' => Property::orderBy('created_at', 'desc')->paginate(25)
         ]);
@@ -42,9 +41,7 @@ class PropertyController extends Controller
     public function create()
     {       
         $property = new Property();
-
         $property->fill([
-
             'surface' => 40,
             'rooms'  => 3,
             'bedrooms' => 1,
@@ -71,7 +68,7 @@ class PropertyController extends Controller
        
         $property = Property::create($request->validated());
         $property->options()->sync($request->validated('options'));
-
+        $property->attachFiles($request->validated('pictures'));
         return to_route('admin.property.index')->with('success', 'Le Bien a été crée');
     }
 
@@ -96,8 +93,9 @@ class PropertyController extends Controller
     public function update(PropertyFormRequest $request, Property $property)
     {
         
-        $property->update($request->validated());
+        $property->update($request->validated());       
         $property->options()->sync($request->validated('options'));
+        $property->attachFiles($request->validated('pictures'));
         return to_route('admin.property.index')->with('success', 'Le Bien a été bien modifié');
     }
 

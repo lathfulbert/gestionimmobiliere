@@ -1,5 +1,12 @@
 <div class="card">
 
+    @if ($property->getPicture())
+        <img src="{{ $property->getPicture()->getImageUrl() }}" alt="" class="w-100">
+        @else
+         <img src="/empty.jpg" alt="" class="w-100">
+
+    @endif
+
     <div class="card-body">
 
         <div class="card-title">

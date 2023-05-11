@@ -6,6 +6,8 @@
     <title>@yield('title')| Mon Agence</title>
 
      @vite(['resources/css/app.css' , 'resources/js/app.js'])
+
+
     
   </head>
   <body>

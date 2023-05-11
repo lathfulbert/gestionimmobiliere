@@ -8,12 +8,16 @@
 
     <h1>@yield('title')</h1>
 
-    <form class="vstack gap-2" action="{{ route($property->exists ? 'admin.property.update' : 'admin.property.store' , $property) }}" method="post">
+    <form class="vstack gap-2" action="{{ route($property->exists ? 'admin.property.update' : 'admin.property.store' , $property) }}" method="post" 
+        enctype="multipart/form-data">
     
         @csrf
         @method($property->exists ? 'put' : 'post')
 
         <div class="row">
+
+            <div class="col" style="flex: 100">
+                     <div class="row">
 
              @include('shared.input', ['class' => 'col', 'name' => 'title','label' => 'Titre', 'value'=> $property->title])
 
@@ -48,6 +52,24 @@
 
         @include('shared.checkbox', ['name' => 'sold', 'label' => 'Vendu', 'value'=> $property->sold])
 
+            </div>
+
+
+            <div class="col" style="flex: 25">
+
+                    @foreach ($property->pictures as $picture)
+                    
+                       <img src="{{ $picture->getImageUrl() }}" alt="" class="w-100 d-block">
+
+                    @endforeach
+
+
+                @include('shared.upload', [ 'name' => 'pictures', 'label' => 'Images', 'multiple' => true])
+            </div>
+
+
+
+        </div>
 
         <div>
             <button class="btn btn-primary">
