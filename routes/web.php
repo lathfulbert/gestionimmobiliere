@@ -38,6 +38,8 @@ Route::delete('/logout', [App\Http\Controllers\AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+Route::get('images/{path}', [App\Http\Controllers\ImageController::class, 'show'])->where('path', '.*');    
+
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () use($idRegex){
 
     Route::resource('property',  PropertyController::class)->except('show');
