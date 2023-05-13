@@ -47,28 +47,24 @@ class Property extends Model
         return $this->hasMany(Picture::class);
     }
 
-    public function attachFiles(array $files)
+    public function attachFiles(?array $files)
     {
         $pictures = [];
-        
-        foreach($files as $file){
-            if($file->getError()){
-                continue;
+
+        if ($files) {
+            foreach ($files as $file) {
+                if ($file->getError()) {
+                    continue;
+                }
+                $filename = $file->store('properties/' . $this->id, 'public');
+                $pictures[] = [
+                    'filename' => $filename
+                ];
             }
-            $filename = $file->store('properties/' . $this->id, 'public');
-
-            $pictures[] = [
-                'filename' => $filename 
-            ];
-
         }
-
-        if (count($pictures) > 0){
-
+        if (count($pictures) > 0) {
             $this->pictures()->createMany($pictures);
         }
-
-
     }
 
 
