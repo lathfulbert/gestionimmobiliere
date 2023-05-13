@@ -55,8 +55,9 @@
 
     </div>
     <div class="col-4">  <h4>Intéressé par un bien ?</h4>
+        @include('shared.flash');
 
-     <form class="vstack gap-3" action="" method="post">
+     <form class="vstack gap-3" action="{{ route('property.contact', $property) }}" method="post">
     
         @csrf
 
@@ -70,7 +71,7 @@
              @include('shared.input', ['type' => 'email','class' => 'col', 'name' => 'email','label' => 'Email'])   
         </div>
 
-            @include('shared.input', ['type'=>'textarea', 'name' => 'description' ,'label' => 'Votre message'])
+            @include('shared.input', ['type'=>'textarea', 'name' => 'message' ,'label' => 'Votre message'])
 
         <div>
             <button class="btn btn-primary">

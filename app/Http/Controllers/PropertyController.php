@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SearchPropertiesRequest;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use App\Mail\PropertyContactMail;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\PropertyContactRequest;
+use App\Http\Requests\SearchPropertiesRequest;
 
 class PropertyController extends Controller
 {
@@ -54,4 +57,12 @@ class PropertyController extends Controller
         );
 
     }
+
+    public function contact(Property $property, PropertyContactRequest $request)
+    {
+        Mail::send(new PropertyContactMail($property, $request->validated()));
+        return back()->with('success', 'Votre demande de contact a bien été envoyé');
+    }
+
+
 }

@@ -28,6 +28,11 @@ Route::get('/biens/{slug}-{property}', [App\Http\Controllers\PropertyController:
 ]);
 
 
+Route::post('/biens/{property}/contact', [App\Http\Controllers\PropertyController::class, 'contact'])->name('property.contact')->where([
+    'property' => $idRegex,
+]);
+
+
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])
     ->middleware('guest')
     ->name('login');
